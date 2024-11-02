@@ -10,10 +10,14 @@ android {
     defaultConfig {
         minSdkVersion 24
         //noinspection ExpiredTargetSdkVersion
-        targetSdkVersion 28
+        targetSdkVersion 289
         buildConfigField "String", "APP_BUILD_TIME", '"' + (new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ", Locale.ROOT).format(new Date())) + '"'
     }
 
+    // Enable buildConfig generation
+    buildFeatures {
+        buildConfig = true
+    }
     compileSdkVersion 29
 
     compileOptions {
