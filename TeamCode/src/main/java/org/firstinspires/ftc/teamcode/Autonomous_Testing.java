@@ -46,61 +46,224 @@ public class Autonomous_Testing extends LinearOpMode {
         telemetry.addData("Say", "Hello Driver");
         telemetry.update();
 
-        int wheel_position = 0;
-        int wheel_speed = 2000;
+        int rwheel = 0;
+        int lwheel = 0;
+        int rbwheel = 0;
+        int lbwheel = 0;
+        int S_distance = 0;  // Slider distance
+        int S_distance_max = 1500;  // Slider distance max
+        int S_speed = 100;
+        int EI_distance = 0;  // EI distance00
+        int EI_distance_max = 1500;
+        int EI_speed = 100;
+        int SR_distance = 0;  // SliderRotate distance
+        int SR_distance_max = 1550;  // SliderRotate distance max
+        int SR_speed = 50;
+        int distance_min = 0;
+        double turnspeed = 0.6;
+        double movementspeed = 1;
+
+        robot.Spintake.setPower(0.25);
+        robot.Spangle.setPosition(0.275);
+
 
         // Wait for the game to start (driver presses PLAY)
         waitForStart();
 
-//              Robot Doesnt Move
-                robot.leftMotorback.setTargetPosition(wheel_position);
-                robot.leftMotorfront.setTargetPosition(wheel_position);
-                robot.rightMotorback.setTargetPosition(wheel_position);
-                robot.rightMotorfront.setTargetPosition(wheel_position);
-                robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.leftMotorback.setPower(1);
-                robot.leftMotorfront.setPower(1);
-                robot.rightMotorback.setPower(1);
-                robot.rightMotorfront.setPower(1);
+        //Forward Backward Left Right, 50 = 1 inch
+        //Turning, x * 10 = x degrees
 
-//              Robot Moves Forward
-                wheel_position += wheel_speed;
-                robot.leftMotorback.setTargetPosition(wheel_position);
-                robot.leftMotorfront.setTargetPosition(wheel_position);
-                robot.rightMotorback.setTargetPosition(wheel_position);
-                robot.rightMotorfront.setTargetPosition(wheel_position);
-                robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.leftMotorback.setPower(1);
-                robot.leftMotorfront.setPower(1);
-                robot.rightMotorback.setPower(1);
-                robot.rightMotorfront.setPower(1);
+////      Robot Doesnt Move
+//        robot.leftMotorback.setTargetPosition(wheel_position);
+//        robot.leftMotorfront.setTargetPosition(wheel_position);
+//        robot.rightMotorback.setTargetPosition(wheel_position);
+//        robot.rightMotorfront.setTargetPosition(wheel_position);
+//        robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+//        robot.leftMotorback.setPower(1);
+//        robot.leftMotorfront.setPower(1);
+//        robot.rightMotorback.setPower(1);
+//        robot.rightMotorfront.setPower(1);
 
-            sleep(2500);
+        //strafe left
 
-//              Robot Moves Forward
-                wheel_position -= wheel_speed;
-                robot.leftMotorback.setTargetPosition(wheel_position);
-                robot.leftMotorfront.setTargetPosition(wheel_position);
-                robot.rightMotorback.setTargetPosition(wheel_position);
-                robot.rightMotorfront.setTargetPosition(wheel_position);
-                robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.leftMotorback.setPower(1);
-                robot.leftMotorfront.setPower(1);
-                robot.rightMotorback.setPower(1);
-                robot.rightMotorfront.setPower(1);
+        rwheel -= 1200;
+        lwheel += 1200;
+        rbwheel += 1200;
+        lbwheel -= 1200;
+        robot.leftMotorback.setTargetPosition(lbwheel);
+        robot.leftMotorfront.setTargetPosition(lwheel);
+        robot.rightMotorback.setTargetPosition(rbwheel);
+        robot.rightMotorfront.setTargetPosition(rwheel);
+        robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorback.setPower(0.25);
+        robot.leftMotorfront.setPower(0.25);
+        robot.rightMotorback.setPower(0.25);
+        robot.rightMotorfront.setPower(0.25);
 
-            sleep(2500);
+        sleep(2000);
 
-            telemetry.addData("Say", "RMF running at"+ robot.rightMotorfront.getPower());
+        //turn towards basket
+
+        rwheel -= 450;
+        lwheel += 450;
+        rbwheel -= 450;
+        lbwheel += 450;
+        robot.leftMotorback.setTargetPosition(lbwheel);
+        robot.leftMotorfront.setTargetPosition(lwheel);
+        robot.rightMotorback.setTargetPosition(rbwheel);
+        robot.rightMotorfront.setTargetPosition(rwheel);
+        robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorback.setPower(0.25);
+        robot.leftMotorfront.setPower(0.25);
+        robot.rightMotorback.setPower(0.25);
+        robot.rightMotorfront.setPower(0.25);
+
+        sleep(1000);
+
+        //set to high basket position
+
+        SR_distance = SR_distance_max;
+        S_distance = 750;
+        robot.SliderRotate.setTargetPosition(SR_distance);
+        robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.RSlider.setTargetPosition(S_distance);
+        robot.RSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.LSlider.setTargetPosition(S_distance);
+        robot.LSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.SliderRotate.setPower(0.75);
+        robot.RSlider.setPower(0.75);
+        robot.LSlider.setPower(0.75);
+        robot.Spintake.setPower(0.25);
+        robot.Spangle.setPosition(0.275);
+
+        sleep(1000);
+
+        EI_distance = 1500;
+        robot.ExtendingIntake.setTargetPosition(EI_distance);
+        robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.ExtendingIntake.setPower(1);
+
+        sleep(750);
+
+        //move towards basket
+
+        rwheel -= 750;
+        lwheel -= 750;
+        rbwheel -= 750;
+        lbwheel -= 750;
+        robot.leftMotorback.setTargetPosition(lbwheel);
+        robot.leftMotorfront.setTargetPosition(lwheel);
+        robot.rightMotorback.setTargetPosition(rbwheel);
+        robot.rightMotorfront.setTargetPosition(rwheel);
+        robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorback.setPower(0.25);
+        robot.leftMotorfront.setPower(0.25);
+        robot.rightMotorback.setPower(0.25);
+        robot.rightMotorfront.setPower(0.25);
+
+        sleep(2500);
+
+        //score sample
+
+        robot.Spintake.setPower(-1);
+
+        sleep(500);
+
+        //prevent outtake from getting stuck
+
+        robot.Spangle.setPosition(0.275);
+        robot.Spintake.setPower(0);
+
+        sleep(750);
+
+        //Move away from basket
+
+        rwheel += 250;
+        lwheel += 250;
+        rbwheel += 250;
+        lbwheel += 250;
+        robot.leftMotorback.setTargetPosition(lbwheel);
+        robot.leftMotorfront.setTargetPosition(lwheel);
+        robot.rightMotorback.setTargetPosition(rbwheel);
+        robot.rightMotorfront.setTargetPosition(rwheel);
+        robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorback.setPower(0.25);
+        robot.leftMotorfront.setPower(0.25);
+        robot.rightMotorback.setPower(0.25);
+        robot.rightMotorfront.setPower(0.25);
+
+        sleep(1500);
+
+        //bring everything down
+
+        robot.Spangle.setPosition(0.35);
+        EI_distance = 0;
+        SR_distance = 0;
+        S_distance = 0;
+        robot.ExtendingIntake.setTargetPosition(EI_distance);
+        robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.SliderRotate.setTargetPosition(SR_distance);
+        robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.RSlider.setTargetPosition(S_distance);
+        robot.RSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.LSlider.setTargetPosition(S_distance);
+        robot.LSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.RSlider.setPower(0.25);
+        robot.LSlider.setPower(0.25);
+        robot.SliderRotate.setPower(0.5);
+        robot.ExtendingIntake.setPower(1);
+        robot.Spintake.setPower(0);
+
+        sleep(1500);
+
+        //turn to become 100 degrees
+
+        rwheel -= 650;
+        lwheel += 650;
+        rbwheel -= 650;
+        lbwheel += 650;
+        robot.leftMotorback.setTargetPosition(lbwheel);
+        robot.leftMotorfront.setTargetPosition(lwheel);
+        robot.rightMotorback.setTargetPosition(rbwheel);
+        robot.rightMotorfront.setTargetPosition(rwheel);
+        robot.leftMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.leftMotorback.setPower(0.25);
+        robot.leftMotorfront.setPower(0.25);
+        robot.rightMotorback.setPower(0.25);
+        robot.rightMotorfront.setPower(0.25);
+
+        sleep(1000);
+
+        //Extend
+
+        EI_distance = 1300;
+        robot.ExtendingIntake.setTargetPosition(EI_distance);
+        robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        robot.ExtendingIntake.setPower(1);
+        robot.Spintake.setPower(1);
+
+        sleep(1000);
+
+        //Go back to allign
+        telemetry.addData("Say", "RMF running at"+ robot.rightMotorfront.getPower());
             telemetry.addData("Say", "RMB running at"+ robot.rightMotorback.getPower());
             telemetry.addData("Say", "LMF running at"+ robot.leftMotorfront.getPower());
             telemetry.addData("Say", "LMB running at"+ robot.leftMotorback.getPower());
