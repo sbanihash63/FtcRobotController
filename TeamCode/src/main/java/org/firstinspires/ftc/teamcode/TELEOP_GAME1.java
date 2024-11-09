@@ -61,13 +61,13 @@ public class TELEOP_GAME1 extends LinearOpMode {
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
             // This way it's also easy to just drive straight, or just turn.
 
-            if ((robot.RSlider.getCurrentPosition() > 500 && robot.RSlider.getCurrentPosition() < 1200) || (robot.ExtendingIntake.getCurrentPosition() > 500 && robot.ExtendingIntake.getCurrentPosition() < 1350) || (robot.SliderRotate.getCurrentPosition() > 700) && robot.SliderRotate.getCurrentPosition() < 1200) {
+            if (robot.ExtendingIntake.getCurrentPosition() > 500 && robot.ExtendingIntake.getCurrentPosition() < 1350) {
                 turnspeed = 0.3;
                 movementspeed = 0.5;
             }
             else if (robot.ExtendingIntake.getCurrentPosition() > 1400) {
                 turnspeed = 0.2;
-                movementspeed = 0.2;
+                movementspeed = 0.3;
             }
             else {
                 turnspeed = 0.6;
@@ -159,7 +159,7 @@ public class TELEOP_GAME1 extends LinearOpMode {
 
             if (gamepad2.dpad_up) {
                 SR_distance = SR_distance_max;
-                S_distance = 750;
+                S_distance = 1000;
                 robot.SliderRotate.setTargetPosition(SR_distance);
                 robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.RSlider.setTargetPosition(S_distance);
