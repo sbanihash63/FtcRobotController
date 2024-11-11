@@ -38,11 +38,11 @@ public class TELEOP_GAME1 extends LinearOpMode {
         telemetry.update();
 
         int S_distance = 0;  // Slider distance
-        int S_distance_max = 1500;  // Slider distance max
+        int S_distance_max = 2000;  // Slider distance max
         int S_speed = 100;
         int EI_distance = 0;  // EI distance00
-        int EI_distance_max = 1500;
-        int EI_speed = 100;
+        int EI_distance_max = 1550;
+        int EI_speed = 50;
         int SR_distance = 0;  // SliderRotate distance
         int SR_distance_max = 1550;  // SliderRotate distance max
         int SR_speed = 50;
@@ -65,7 +65,7 @@ public class TELEOP_GAME1 extends LinearOpMode {
                 turnspeed = 0.3;
                 movementspeed = 0.5;
             }
-            else if (robot.ExtendingIntake.getCurrentPosition() > 1400) {
+            else if (robot.ExtendingIntake.getCurrentPosition() > 1300) {
                 turnspeed = 0.2;
                 movementspeed = 0.3;
             }
@@ -128,7 +128,7 @@ public class TELEOP_GAME1 extends LinearOpMode {
 
             //            Extending Intake
             if (gamepad2.right_trigger == 1) {
-                EI_distance = 1300;
+                EI_distance = 1550;
                 robot.ExtendingIntake.setTargetPosition(EI_distance);
                 robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.ExtendingIntake.setPower(1);
@@ -142,40 +142,73 @@ public class TELEOP_GAME1 extends LinearOpMode {
                 robot.Spangle.setPosition(0);
                 robot.Spintake.setPower(0.25);
             }
-            if (gamepad2.y && EI_distance < EI_distance_max) {
-                EI_distance += EI_speed;
-                robot.ExtendingIntake.setTargetPosition(EI_distance);
-                robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.ExtendingIntake.setPower(1);
-                robot.Spintake.setPower(0.25);
+            if (gamepad2.y && SR_distance < SR_distance_max) {
+                SR_distance += SR_speed;
+                robot.SliderRotate.setTargetPosition(SR_distance);
+                robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.SliderRotate.setPower(1);
             }
-            if (gamepad2.a && EI_distance > distance_min) {
-                EI_distance -= EI_speed;
-                robot.ExtendingIntake.setTargetPosition(EI_distance);
-                robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.ExtendingIntake.setPower(1);
-                robot.Spintake.setPower(0.25);
+            if (gamepad2.a && SR_distance > distance_min) {
+                SR_distance -= SR_speed;
+                robot.SliderRotate.setTargetPosition(SR_distance);
+                robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.SliderRotate.setPower(1);
             }
 
-            if (gamepad2.dpad_up) {
-                SR_distance = SR_distance_max;
-                S_distance = 1000;
+            if (gamepad1.y) {
+                S_distance  = 1750;
+                SR_distance = 250;
+                EI_distance = 0;
+                robot.ExtendingIntake.setTargetPosition(EI_distance);
+                robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.SliderRotate.setTargetPosition(SR_distance);
                 robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.RSlider.setTargetPosition(S_distance);
                 robot.RSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.LSlider.setTargetPosition(S_distance);
                 robot.LSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.ExtendingIntake.setPower(1);
                 robot.SliderRotate.setPower(0.5);
-                robot.RSlider.setPower(0.25);
-                robot.LSlider.setPower(0.25);
+                robot.RSlider.setPower(0.5);
+                robot.LSlider.setPower(0.5);
+            }
+            if (gamepad1.a) {
+                S_distance  = 500;
+                SR_distance = 250;
+                EI_distance = 0;
+                robot.ExtendingIntake.setTargetPosition(EI_distance);
+                robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.SliderRotate.setTargetPosition(SR_distance);
+                robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.RSlider.setTargetPosition(S_distance);
+                robot.RSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.LSlider.setTargetPosition(S_distance);
+                robot.LSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.ExtendingIntake.setPower(1);
+                robot.SliderRotate.setPower(0.5);
+                robot.RSlider.setPower(0.75);
+                robot.LSlider.setPower(0.75);
+            }
+
+            if (gamepad2.dpad_up) {
+                SR_distance = SR_distance_max;
+                robot.SliderRotate.setTargetPosition(SR_distance);
+                robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                robot.SliderRotate.setPower(0.5);
                 robot.Spintake.setPower(0.25);
                 robot.Spangle.setPosition(0.275);
                 if (robot.SliderRotate.getCurrentPosition() > 1400) {
-                    EI_distance = 1500;
+                    EI_distance = 1450;
+                    S_distance = 1000;
+                    robot.RSlider.setTargetPosition(S_distance);
+                    robot.RSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+                    robot.LSlider.setTargetPosition(S_distance);
+                    robot.LSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     robot.ExtendingIntake.setTargetPosition(EI_distance);
                     robot.ExtendingIntake.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                     robot.ExtendingIntake.setPower(1);
+                    robot.RSlider.setPower(1);
+                    robot.LSlider.setPower(1);
                     robot.Spintake.setPower(0.25);
                     robot.Spangle.setPosition(0.275);
                 }
@@ -212,9 +245,9 @@ public class TELEOP_GAME1 extends LinearOpMode {
                 robot.RSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
                 robot.LSlider.setTargetPosition(S_distance);
                 robot.LSlider.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-                robot.RSlider.setPower(0.25);
-                robot.LSlider.setPower(0.25);
-                robot.SliderRotate.setPower(0.25);
+                robot.RSlider.setPower(0.5);
+                robot.LSlider.setPower(0.5);
+                robot.SliderRotate.setPower(0.5);
                 robot.ExtendingIntake.setPower(1);
                 robot.Spintake.setPower(0.25);
             }
@@ -235,7 +268,8 @@ public class TELEOP_GAME1 extends LinearOpMode {
             }
 
 
-            telemetry.addData("EI Position", "EI position is "+ EI_distance);
+            telemetry.addData("EI Position", "EI position"+ EI_distance);
+            telemetry.addData("EI Position", "EI position is"+ robot.ExtendingIntake.getCurrentPosition());
             telemetry.addData("Slider Position", "Slider position is "+ S_distance);
             telemetry.addData("Rotate Position", "rotate position is "+ SR_distance);
             telemetry.addData("Say", "RMF running at"+ robot.rightMotorfront.getPower());
