@@ -57,7 +57,7 @@ public class Autonomous_Testing extends LinearOpMode {
         int EI_distance_max = 1500;
         int EI_speed = 100;
         int SR_distance = 0;  // SliderRotate distance
-        int SR_distance_max = 1550;  // SliderRotate distance max
+        int SR_distance_max = 1600;  // SliderRotate distance max
         int SR_speed = 50;
         int distance_min = 0;
         double turnspeed = 0.6;
@@ -113,10 +113,10 @@ public class Autonomous_Testing extends LinearOpMode {
 
         //turn towards basket
 
-        rwheel += 500;
-        lwheel -= 500;
-        rbwheel += 500;
-        lbwheel -= 500;
+        rwheel += 470;
+        lwheel -= 470;
+        rbwheel += 470;
+        lbwheel -= 470;
         robot.leftMotorback.setTargetPosition(lbwheel);
         robot.leftMotorfront.setTargetPosition(lwheel);
         robot.rightMotorback.setTargetPosition(rbwheel);
@@ -130,7 +130,6 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.rightMotorback.setPower(0.5);
         robot.rightMotorfront.setPower(0.5);
 
-        sleep(500);
 
         //set to high basket position
 
@@ -159,10 +158,10 @@ public class Autonomous_Testing extends LinearOpMode {
 
         //move towards basket
 
-        rwheel -= 775;
-        lwheel -= 775;
-        rbwheel -= 775;
-        lbwheel -= 775;
+        rwheel -= 725;
+        lwheel -= 725;
+        rbwheel -= 725;
+        lbwheel -= 725;
         robot.leftMotorback.setTargetPosition(lbwheel);
         robot.leftMotorfront.setTargetPosition(lwheel);
         robot.rightMotorback.setTargetPosition(rbwheel);
@@ -171,10 +170,10 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.leftMotorback.setPower(0.5);
-        robot.leftMotorfront.setPower(0.5);
-        robot.rightMotorback.setPower(0.5);
-        robot.rightMotorfront.setPower(0.5);
+        robot.leftMotorback.setPower(0.3);
+        robot.leftMotorfront.setPower(0.3);
+        robot.rightMotorback.setPower(0.3);
+        robot.rightMotorfront.setPower(0.3);
 
         sleep(1000);
 
@@ -182,8 +181,7 @@ public class Autonomous_Testing extends LinearOpMode {
 
         robot.Spintake.setPower(-1);
 
-        sleep(500);
-
+        sleep(250);
         //prevent outtake from getting stuck
 
         robot.Spangle.setPosition(0.8);
@@ -191,10 +189,11 @@ public class Autonomous_Testing extends LinearOpMode {
 
         //Move away from basket
 
-        rwheel += 100;
-        lwheel += 100;
-        rbwheel += 100;
-        lbwheel += 100;
+        sleep(250);
+        rwheel += 50;
+        lwheel += 50;
+        rbwheel += 50;
+        lbwheel += 50;
         robot.leftMotorback.setTargetPosition(lbwheel);
         robot.leftMotorfront.setTargetPosition(lwheel);
         robot.rightMotorback.setTargetPosition(rbwheel);
@@ -246,10 +245,10 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.leftMotorback.setPower(0.25);
-        robot.leftMotorfront.setPower(0.25);
-        robot.rightMotorback.setPower(0.25);
-        robot.rightMotorfront.setPower(0.25);
+        robot.leftMotorback.setPower(0.4);
+        robot.leftMotorfront.setPower(0.4);
+        robot.rightMotorback.setPower(0.4);
+        robot.rightMotorfront.setPower(0.4);
 
         sleep(1200);
 
@@ -262,7 +261,7 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.Spintake.setPower(1);
         robot.Spangle.setPosition(0.8);
 
-        sleep(500);
+        sleep(1200);
 
         //collect right sample
 
@@ -278,10 +277,10 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.leftMotorback.setPower(0.1);
-        robot.leftMotorfront.setPower(0.1);
-        robot.rightMotorback.setPower(0.1);
-        robot.rightMotorfront.setPower(0.1);
+        robot.leftMotorback.setPower(0.05);
+        robot.leftMotorfront.setPower(0.05);
+        robot.rightMotorback.setPower(0.05);
+        robot.rightMotorfront.setPower(0.05);
 
         sleep(2000);
 
@@ -325,18 +324,18 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.rightMotorback.setPower(0.25);
         robot.rightMotorfront.setPower(0.25);
 
-        sleep(500);
+        sleep(250);
 
         //set to high basket position
 
-        SR_distance = 1500;
+        SR_distance = SR_distance_max;
         robot.SliderRotate.setTargetPosition(SR_distance);
         robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.SliderRotate.setPower(0.75);
         robot.Spintake.setPower(0.25);
         robot.Spangle.setPosition(0.275);
 
-        sleep(750);
+        sleep(1000);
 
         EI_distance = 1400;
         S_distance = 1000;
@@ -354,10 +353,10 @@ public class Autonomous_Testing extends LinearOpMode {
 
         //Move towards basket for second sample
 
-        rwheel -= 150;
-        lwheel -= 150;
-        rbwheel -= 150;
-        lbwheel -= 150;
+        rwheel -= 50;
+        lwheel -= 50;
+        rbwheel -= 50;
+        lbwheel -= 50;
         robot.leftMotorback.setTargetPosition(lbwheel);
         robot.leftMotorfront.setTargetPosition(lwheel);
         robot.rightMotorback.setTargetPosition(rbwheel);
@@ -366,10 +365,10 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.leftMotorback.setPower(0.25);
-        robot.leftMotorfront.setPower(0.25);
-        robot.rightMotorback.setPower(0.25);
-        robot.rightMotorfront.setPower(0.25);
+        robot.leftMotorback.setPower(0.15);
+        robot.leftMotorfront.setPower(0.15);
+        robot.rightMotorback.setPower(0.15);
+        robot.rightMotorfront.setPower(0.15);
 
         sleep(900);
 
@@ -386,10 +385,10 @@ public class Autonomous_Testing extends LinearOpMode {
 
         //Move away from basket
 
-        rwheel += 350;
-        lwheel += 350;
-        rbwheel += 350;
-        lbwheel += 350;
+        rwheel += 200;
+        lwheel += 200;
+        rbwheel += 200;
+        lbwheel += 200;
         robot.leftMotorback.setTargetPosition(lbwheel);
         robot.leftMotorfront.setTargetPosition(lwheel);
         robot.rightMotorback.setTargetPosition(rbwheel);
@@ -455,9 +454,9 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.Spintake.setPower(1);
         robot.Spangle.setPosition(0.8);
 
-        sleep(500);
+        sleep(1000);
 
-        //turn to become 135 degrees
+        //turn to pickup
 
         rwheel -= 450;
         lwheel += 450;
@@ -471,10 +470,10 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.leftMotorback.setPower(0.15);
-        robot.leftMotorfront.setPower(0.15);
-        robot.rightMotorback.setPower(0.15);
-        robot.rightMotorfront.setPower(0.15);
+        robot.leftMotorback.setPower(0.1);
+        robot.leftMotorfront.setPower(0.1);
+        robot.rightMotorback.setPower(0.1);
+        robot.rightMotorfront.setPower(0.1);
 
         sleep(1500);
 
@@ -502,10 +501,10 @@ public class Autonomous_Testing extends LinearOpMode {
 
         //turn to become 45 degrees (aligned with basket)
 
-        rwheel += 1100;
-        lwheel -= 1100;
-        rbwheel += 1100;
-        lbwheel -= 1100;
+        rwheel += 1150;
+        lwheel -= 1150;
+        rbwheel += 1150;
+        lbwheel -= 1150;
         robot.leftMotorback.setTargetPosition(lbwheel);
         robot.leftMotorfront.setTargetPosition(lwheel);
         robot.rightMotorback.setTargetPosition(rbwheel);
@@ -519,18 +518,16 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.rightMotorback.setPower(0.5);
         robot.rightMotorfront.setPower(0.5);
 
-        sleep(1000);
-
         //set to high basket position
 
-        SR_distance = 1500;
+        SR_distance = SR_distance_max;
         robot.SliderRotate.setTargetPosition(SR_distance);
         robot.SliderRotate.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.SliderRotate.setPower(0.75);
         robot.Spintake.setPower(0.25);
         robot.Spangle.setPosition(0.275);
 
-        sleep(750);
+        sleep(1500);
 
         EI_distance = 1400;
         S_distance = 1000;
@@ -548,10 +545,10 @@ public class Autonomous_Testing extends LinearOpMode {
 
         //Move towards basket for second sample
 
-        rwheel -= 450;
-        lwheel -= 450;
-        rbwheel -= 450;
-        lbwheel -= 450;
+        rwheel -= 400;
+        lwheel -= 400;
+        rbwheel -= 400;
+        lbwheel -= 400;
         robot.leftMotorback.setTargetPosition(lbwheel);
         robot.leftMotorfront.setTargetPosition(lwheel);
         robot.rightMotorback.setTargetPosition(rbwheel);
@@ -560,10 +557,10 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.leftMotorback.setPower(0.25);
-        robot.leftMotorfront.setPower(0.25);
-        robot.rightMotorback.setPower(0.25);
-        robot.rightMotorfront.setPower(0.25);
+        robot.leftMotorback.setPower(0.15);
+        robot.leftMotorfront.setPower(0.15);
+        robot.rightMotorback.setPower(0.15);
+        robot.rightMotorfront.setPower(0.15);
 
         sleep(500);
 
@@ -592,10 +589,10 @@ public class Autonomous_Testing extends LinearOpMode {
         robot.leftMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorback.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         robot.rightMotorfront.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        robot.leftMotorback.setPower(0.5);
-        robot.leftMotorfront.setPower(0.5);
-        robot.rightMotorback.setPower(0.5);
-        robot.rightMotorfront.setPower(0.5);
+        robot.leftMotorback.setPower(0.25);
+        robot.leftMotorfront.setPower(0.25);
+        robot.rightMotorback.setPower(0.25);
+        robot.rightMotorfront.setPower(0.25);
 
         sleep(500);
 
